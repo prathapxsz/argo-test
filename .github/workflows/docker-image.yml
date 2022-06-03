@@ -13,4 +13,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: chmod 777 run.sh && docker build . --file Dockerfile -t ovaledge.jfrog.io/ovaledge-docker-local/ovaledge:mcktest26 && docker login ovaledge.jfrog.io -u shivaprasad.mergu@ovaledge.com -p 0valEdge! && docker push ovaledge.jfrog.io/ovaledge-docker-local/ovaledge:mcktest26
+      run: chmod 777 run.sh && docker build . --file Dockerfile -t ovaledge.jfrog.io/ovaledge-docker-local/ovaledge:mcktest26 && docker login ovaledge.jfrog.io -u shivaprasad.mergu@ovaledge.com -p 0valEdge! && docker push ovaledge.jfrog.io/ovaledge-docker-local/ovaledge:mcktest26 && git clone https://github.com/prathapxsz/argo-test.git && cd argo-test && sed -i "s/^  image: .*/  image: ovaledge.jfrog.io\/ovaledge-docker-local\/ovaledge:$tag/" ./values.yaml && git add . && git commit -m "Updated the docker image with tag: $tag" && git push https://prathapxsz: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@github.com/prathapxsz/argo-test.git --all && echo "Updating the deployment"
